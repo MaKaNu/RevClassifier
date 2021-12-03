@@ -13,8 +13,8 @@ class Config(BaseModel):
     def load_json(self, config_file=Path("revclassifier/config.json")):
         with config_file.open() as json_file:
             config_data = json.load(json_file)
-            print(config_data)
-            json.dumps(config_data, indent=4)
+            self.path = config_data['config']['path']
+            print(self.path)
 
     @validator('path')
     def check_path_existence(cls, val):
